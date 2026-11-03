@@ -77,7 +77,7 @@ public class DeliveryServiceTest {
         Delivery delivery = deliveryService.createDelivery("D04", pkg, customer);
 
         assertThrows(IllegalStateException.class, () -> {
-            deliveryService.changeStatus("D03", DeliveryStatus.ASSIGNED);
+            deliveryService.changeStatus("D04", DeliveryStatus.ASSIGNED);
         });
     }
 }
