@@ -75,9 +75,15 @@ public class DeliveryServiceTest {
         Courier courier = new Courier("CR01", "Петр Петров");
 
         Delivery delivery = deliveryService.createDelivery("D04", pkg, customer);
+        assertEquals(DeliveryStatus.CREATED, delivery.getStatus());
 
-        assertThrows(IllegalStateException.class, () -> {
-            deliveryService.changeStatus("D04", DeliveryStatus.ASSIGNED);
-        });
+        deliveryService.assignCourier("D04", courier);
+        assertEquals(DeliveryStatus.ASSIGNED, delivery.getStatus());
+
+        deliveryService.changeStatus("D04", DeliveryStatus.IN_TRANSIT);
+        assertEquals(DeliveryStatus.IN_TRANSIT, delivery.getStatus());
+
+        deliveryService.changeStatus("D04", DeliveryStatus.DELIVERED);
+        assertEquals(DeliveryStatus.DELIVERED, delivery.getStatus());
     }
 }
