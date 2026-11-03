@@ -63,8 +63,8 @@ public class DeliveryServiceTest {
         deliveryService.changeStatus("D03", DeliveryStatus.CANCELLED);
 
         // Попытка сменить статус у уже отмененной доставки должна вызвать исключение
-        //assertThrows(IllegalStateException.class, () -> {
+        assertThrows(IllegalStateException.class, () -> {
             deliveryService.changeStatus("D03", DeliveryStatus.IN_TRANSIT);
-        //});
+        });
     }
 }
