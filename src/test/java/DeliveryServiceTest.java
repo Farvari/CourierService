@@ -67,4 +67,17 @@ public class DeliveryServiceTest {
             deliveryService.changeStatus("D03", DeliveryStatus.IN_TRANSIT);
         });
     }
+
+    @Test
+    void test4() {
+        Package pkg = new Package("P04", "Велосипед", 5);
+        Customer customer = new Customer("C04", "Александр Шмат", "пр. Держинского, д. 11");
+        Courier courier = new Courier("CR01", "Петр Петров");
+
+        Delivery delivery = deliveryService.createDelivery("D04", pkg, customer);
+
+        //assertThrows(IllegalStateException.class, () -> {
+            deliveryService.changeStatus("D03", DeliveryStatus.ASSIGNED);
+        //});
+    }
 }
