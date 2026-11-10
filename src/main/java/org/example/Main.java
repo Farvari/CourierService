@@ -57,8 +57,7 @@ public class Main {
                 + " (" + delivery.getPkg().getWeightKg() + " кг)");
         System.out.println("Получатель   : " + delivery.getCustomer().getName()
                 + " (" + delivery.getCustomer().getAddress() + ")");
-        System.out.println("Курьер       : " + (delivery.getCourier()
-                != null ? delivery.getCourier().getName() : "Не назначен"));
+        System.out.println("Курьер       : " + (delivery.getCourier() != null ? delivery.getCourier().getName() : "Не назначен"));
         System.out.println("Текущий статус: " + delivery.getStatus());
     }
 }
