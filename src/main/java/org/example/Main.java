@@ -30,7 +30,7 @@ public class Main {
         delivery = deliveryService.getDeliveryOrThrow("DEL-001");
         printInfo(delivery);
 
-        System.out.println("\n4. Изменение статуса на 'Доставлено'");
+        System.out.println("\n4. Изменение статуса на 'Доставлено.'");
         deliveryService.changeStatus("DEL-001", DeliveryStatus.DELIVERED);
         delivery = deliveryService.getDeliveryOrThrow("DEL-001");
         printInfo(delivery);
