@@ -10,7 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.DeliveryService;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DeliveryServiceTest {
 
@@ -79,6 +80,17 @@ public class DeliveryServiceTest {
 
         assertThrows(IllegalStateException.class, () -> {
             deliveryService.changeStatus("D04", DeliveryStatus.IN_TRANSIT);
+        });
+    }
+
+    @Test
+    void test5() {
+        // Тест 5: Ошибка создания доставки — пустой идентификатор (ERROR-логирование)
+        Package pkg = new Package("P05", "Hardware", 2.0);
+        Customer customer = new Customer("C05", "Елена Ковалева", "ул. Гагарина, д. 3");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            deliveryService.createDelivery("   ", pkg, customer);
         });
     }
 }

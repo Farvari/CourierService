@@ -1,7 +1,11 @@
 package org.example;
-import model.*;
-import repo.*;
-import service.*;
+import model.Courier;
+import model.Customer;
+import model.Delivery;
+import model.DeliveryStatus;
+import repo.DeliveryRepo;
+import repo.InMemoryDeliveryRepo;
+import service.DeliveryService;
 
 public class Main {
     public static void main(String[] args) {
@@ -49,9 +53,12 @@ public class Main {
 
     private static void printInfo(Delivery delivery) {
         System.out.println("ID Доставки  : " + delivery.getId());
-        System.out.println("Посылка      : " + delivery.getPkg().getDescription() + " (" + delivery.getPkg().getWeightKg() + " кг)");
-        System.out.println("Получатель   : " + delivery.getCustomer().getName() + " (" + delivery.getCustomer().getAddress() + ")");
-        System.out.println("Курьер       : " + (delivery.getCourier() != null ? delivery.getCourier().getName() : "Не назначен"));
+        System.out.println("Посылка      : " + delivery.getPkg().getDescription()
+                + " (" + delivery.getPkg().getWeightKg() + " кг)");
+        System.out.println("Получатель   : " + delivery.getCustomer().getName()
+                + " (" + delivery.getCustomer().getAddress() + ")");
+        System.out.println("Курьер       : " + (delivery.getCourier()
+                != null ? delivery.getCourier().getName() : "Не назначен"));
         System.out.println("Текущий статус: " + delivery.getStatus());
     }
 }
